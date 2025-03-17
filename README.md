@@ -1,0 +1,1 @@
+Just a simple realtime chat application with gRPC communication

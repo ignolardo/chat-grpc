@@ -1,0 +1,4 @@
+rule protoc
+    command=protoc --go_out=. --go-grpc_out=. src/broadcast/broadcast.proto
+
+build protoc: protoc

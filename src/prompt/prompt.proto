@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package prompt;
+
+option go_package="/src/prompt";
+
+message Text {
+    string content = 1;
+}
+
+message Close {}
+
+service Prompt {
+    rpc Connect (stream Text) returns (Close);
+}

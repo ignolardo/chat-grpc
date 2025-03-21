@@ -1,4 +1,4 @@
-package main
+package serverlib
 
 import (
 	"context"
@@ -10,13 +10,17 @@ import (
 	"google.golang.org/grpc"
 )
 
-func main() {
+var (
+	addr = "localhost:41796"
+)
+
+func InitServer() {
 	var connections []*Connection
 	broadcast := &Broadcast{
 		connections: connections,
 	}
 
-	listener, err := net.Listen("tcp", ":50067")
+	listener, err := net.Listen("tcp", addr)
 
 	if err != nil {
 		log.Fatalf("Could not listen tcp port : %v", err)
@@ -32,6 +36,7 @@ func main() {
 	if err := s.Serve(listener); err != nil {
 		log.Fatalf("Could not create gRPC server : %v", err)
 	}
+
 }
 
 type Connection struct {

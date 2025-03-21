@@ -1,4 +1,5 @@
 rule protoc
-    command=protoc --go_out=. --go-grpc_out=. src/broadcast/broadcast.proto
+    command=protoc --go_out=. --go-grpc_out=. $in
 
-build protoc: protoc
+build protoc_broadcast: protoc src/broadcast/broadcast.proto
+build protoc_prompt: protoc src/prompt/prompt.proto
